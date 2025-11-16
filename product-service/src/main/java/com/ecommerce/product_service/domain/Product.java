@@ -21,6 +21,8 @@ public class Product {
     @Column(name = "seller_id")
     private Long sellerId;
 
+    private String category;
+
 //    // custom constructor
 //    public Product(Long id, String name, Float price) {
 //        this.id = id;

@@ -1,0 +1,13 @@
+INSERT INTO products (name, price, category, seller_id) VALUES ('Taro Milk Tea', 100, 'milk-tea', 1);
+INSERT INTO products (name, price, category, seller_id) VALUES ('Bobba', 1.5, 'topping', 1);
+INSERT INTO products (name, price, category, seller_id) VALUES ('Olong Tea', 30, 'tea', 1);
+INSERT INTO products (name, price, category, seller_id) VALUES ('Jasmine Tea', 20, 'tea', 1);
+INSERT INTO products (name, price, category, seller_id) VALUES ('Black Milk Tea', 10, 'milk-tea', 3);
+INSERT INTO products (name, price, category, seller_id) VALUES ('Jelly', 50.5, 'topping', 3);
+INSERT INTO products (name, price, category, seller_id) VALUES ('Tofu Matcha Latte', 10.5, 'milk-tea', 4);
+INSERT INTO products (name, price, category, seller_id) VALUES ('Tofu', 2.5, 'topping', 4);
+INSERT INTO products (name, price, category, seller_id) VALUES ('Strawberry Matcha', 5.5, 'milk-tea', 1);
+INSERT INTO products (name, price, category, seller_id) VALUES ('Chicken Wings', 30, 'chicken', 2);
+INSERT INTO products (name, price, category, seller_id) VALUES ('French Fried', 20, 'snack', 2);
+INSERT INTO products (name, price, category, seller_id) VALUES ('Beef Burger', 10, 'burger', 5);
+INSERT INTO products (name, price, category, seller_id) VALUES ('Grill Chicken', 50.5, 'chicken', 2);
