@@ -33,7 +33,7 @@ public class ProductController {
     }
 
     @GetMapping("/details/{id}")
-    public ResponseEntity<Product> findByProdId(@PathVariable Long id) {
+    public ResponseEntity<Product> getByProdId(@PathVariable Long id) {
         Product product = productService.findById(id);
 
         if (product != null) return ResponseEntity.ok(product);
@@ -41,8 +41,16 @@ public class ProductController {
     }
 
     @GetMapping("/products/by-seller/{sellerId}")
-    public ResponseEntity<List<Product>> findBySellerId(@PathVariable Long sellerId) {
+    public ResponseEntity<List<Product>> getBySellerId(@PathVariable Long sellerId) {
         List<Product> products = productService.findBySellerId(sellerId);
+
+        if (products.size() > 0) return ResponseEntity.ok(products);
+        return ResponseEntity.notFound().build();
+    }
+
+    @PostMapping("/products/by-order")
+    public ResponseEntity<List<Product>> getProdsByIds(@RequestBody List<Long> prodIds) {
+        List<Product> products = productService.findByProdIds(prodIds);
 
         if (products.size() > 0) return ResponseEntity.ok(products);
         return ResponseEntity.notFound().build();

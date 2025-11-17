@@ -11,8 +11,10 @@ import org.springframework.data.domain.Pageable;
 import org.springframework.data.domain.Sort;
 import org.springframework.stereotype.Service;
 
+import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
+import java.util.Optional;
 
 @Service
 @RequiredArgsConstructor
@@ -40,6 +42,17 @@ public class ProductService {
         // can additionally check whether the seller with that id exists
 
         return productRepository.findAllBySellerId(sellerId);
+    }
+
+    public List<Product> findByProdIds(List<Long> prodIds) {
+        List<Product> products = new ArrayList<>();
+
+        for (Long id : prodIds) {
+            Optional<Product> prod = productRepository.findById(id);
+            if (prod.isPresent()) products.add(prod.get());     // (==) prod.ifPresent(products::add);
+        }
+
+        return products;
     }
 
     public Long createNewProduct(ProductCreateDTO prod) {
