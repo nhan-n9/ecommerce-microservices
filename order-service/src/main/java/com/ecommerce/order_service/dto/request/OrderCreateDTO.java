@@ -5,10 +5,7 @@ import lombok.*;
 import java.util.Date;
 import java.util.List;
 
-@Getter
-@Setter
-@NoArgsConstructor
-@AllArgsConstructor
+@Data
 public class OrderCreateDTO {
     private Long userId;
     private Date orderDate;

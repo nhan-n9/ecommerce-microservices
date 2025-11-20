@@ -11,12 +11,12 @@ import org.springframework.web.bind.annotation.*;
 import java.util.List;
 
 @RestController
-@RequestMapping("/product-svc")
+@RequestMapping("/product")
 @RequiredArgsConstructor
 public class ProductController {
     private final ProductService productService;
 
-    @GetMapping("/products")
+    @GetMapping("/all")
     public ResponseEntity<Page<Product>> getAll(
             @RequestParam(defaultValue = "0") int page,
             @RequestParam(defaultValue = "5") int size,
@@ -40,7 +40,7 @@ public class ProductController {
         return ResponseEntity.notFound().build();
     }
 
-    @GetMapping("/products/by-seller/{sellerId}")
+    @GetMapping("/all/by-seller/{sellerId}")
     public ResponseEntity<List<Product>> getBySellerId(@PathVariable Long sellerId) {
         List<Product> products = productService.findBySellerId(sellerId);
 
@@ -48,7 +48,7 @@ public class ProductController {
         return ResponseEntity.notFound().build();
     }
 
-    @PostMapping("/products/by-order")
+    @PostMapping("/all/by-order")
     public ResponseEntity<List<Product>> getProdsByIds(@RequestBody List<Long> prodIds) {
         List<Product> products = productService.findByProdIds(prodIds);
 
@@ -56,7 +56,7 @@ public class ProductController {
         return ResponseEntity.notFound().build();
     }
 
-    @PostMapping("/product/create")
+    @PostMapping("/create")
     public ResponseEntity<Long> createProduct(@RequestBody ProductCreateDTO requestDto) {
         Long newProdId = productService.createNewProduct(requestDto);
 
