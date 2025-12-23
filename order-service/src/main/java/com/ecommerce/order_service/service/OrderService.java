@@ -48,6 +48,7 @@ public class OrderService {
 
         if (order.getItems().size() > 0) {
             for (OrderItem item : order.getItems()) {
+                // fetch each product from list items
                 Product prod = orderInterface.getByProdId(item.getProdId()).getBody();
                 itemProds.add(mapper.getItemProductDetailDTO(item, prod));
             }

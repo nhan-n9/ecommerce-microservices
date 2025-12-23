@@ -31,8 +31,8 @@ public class Order {
     @OneToMany(
 //          fetch = FetchType.EAGER,  // use when want automatically fetch all items by default
             mappedBy = "orderId",   // map to orderId field
-            cascade = CascadeType.ALL,
-            orphanRemoval = true
+            cascade = CascadeType.ALL,  // e.g. delete an Order, all OrderItem children are also deleted
+            orphanRemoval = true    // If a child entity (OrderItem) is removed from the parent's collection & is no longer referenced by others -> will be deleted from the db
     )
     private List<OrderItem> items = new ArrayList<>();
 }

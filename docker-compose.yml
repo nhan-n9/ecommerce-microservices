@@ -1,0 +1,85 @@
+# run with `docker compose up -d`
+
+services:
+# [1]
+  postgres:
+    container_name: EC-MIC-pg_sql
+    image: postgres
+    environment:
+#     env var names should follow PostgreSQL recognizes (https://github.com/docker-library/docs/blob/master/postgres/README.md)
+      POSTGRES_USER: hehe
+      POSTGRES_PASSWORD: 123    # the only required env var
+      PGDATA: /var/lib/postgresql/data    # used for setup sql data (Dockerfile that builds the image declares a volume at /var/lib/postgresql/data)
+    volumes:
+      - postgres:/var/lib/postgresql/data   # map to volume below -> will be consistent
+    ports:
+      - 5432:5432   # <external port>:<container-port>
+    networks:
+      - net-EC-MIC
+    restart: unless-stopped
+
+
+# [2] pgadmin server - used for processing without Intellij
+# (https://www.pgadmin.org/docs/pgadmin4/latest/container_deployment.html)
+#  pgadmin:
+#    container_name: EC-MIC-pg_admin
+#    image: dpage/pgadmin4
+#    environment:
+#      PGADMIN_DEFAULT_EMAIL: ${PGADMIN_DEFAULT_EMAIL:-pgadmin@pgadmin.org}    # dynamic-value:default
+#      PGADMIN_DEFAULT_PASSWORD: ${PGADMIN_DEFAULT_PASSWORD:-pgadmin}
+#      PGADMIN_CONFIG_SERVER_MODE: 'False'   # Don't require the user to login
+#    volumes:
+#      - pgadmin:/var/lib/pgadmin
+#    ports:
+#      - 5050:80     # use external port 5050 (or wev) to avoid port 80
+#    networks:
+#      - net-EC-MIC
+#    restart: unless-stopped
+
+
+# [3] https://hub.docker.com/_/mongo
+  mongodb:
+    container_name: EC-MIC-mongodb
+    image: mongo
+    ports:
+      - 27017:27017
+    volumes:
+      - mongo:/data
+    environment:
+      - MONGO_INITDB_ROOT_USERNAME=hehe   # can also be set like this
+      - MONGO_INITDB_ROOT_PASSWORD=123
+    restart: unless-stopped
+
+
+# [4] https://github.com/docker-library/docs/tree/master/mongo-express
+  mongo-express:
+    container_name: EC-MIC-mongo-express
+    image: mongo-express
+    ports:
+      - 8081:8081
+    environment:
+      ME_CONFIG_MONGODB_ADMINUSERNAME: hehe
+      ME_CONFIG_MONGODB_ADMINPASSWORD: 123
+      ME_CONFIG_MONGODB_SERVER: mongodb   # MongoDB sv container name (above)
+    restart: unless-stopped
+
+
+# [5] for mail service (https://hub.docker.com/r/maildev/maildev)
+  mail-dev:
+    container_name: EC-MIC-mail-dev
+    image: maildev/maildev
+    ports:
+      - 1080:1080     # for the UI
+      - 1025:1025     # for the SMTP server
+    restart: unless-stopped
+
+####### create a network #######
+networks:
+  net-EC-MIC:
+    driver: bridge
+
+######## create 3 volumes #######
+volumes:
+  postgres:
+#  pgadmin:
+  mongo:

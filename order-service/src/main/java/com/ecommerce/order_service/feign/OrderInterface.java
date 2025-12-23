@@ -9,6 +9,7 @@ import java.util.List;
 
 // use as a Feign client to communicate with product-service
 
+// tells Spring Cloud OpenFeign -> look up service named PRODUCT-SERVICE in Eureka registry
 @FeignClient(name = "PRODUCT-SERVICE")    // must be uppercase as shown on Eureka
 public interface OrderInterface {
 
