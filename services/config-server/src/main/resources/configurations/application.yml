@@ -1,0 +1,18 @@
+# can be either YAML or properties format
+
+eureka:
+  instance:
+    hostname: localhost
+  client:
+    service-url:
+      defaultZone: http://localhost:8761/eureka/
+
+spring:
+  cloud:
+    config:
+      override-system-properties: false     # do not override config from microservice
+
+application:
+  config:
+    jwt:
+      secret: ${JWT_SECRET:a00ls1hLRMxTgk0AcrpawYJvR4FDwc07xGyaROb0H6L}

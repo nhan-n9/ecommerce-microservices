@@ -18,55 +18,86 @@ services:
       - net-EC-MIC
     restart: unless-stopped
 
+# [2]
   postgres-user:
     container_name: EC-MIC-pg_sql_user
     image: postgres
     environment:
-#     env var names should follow PostgreSQL recognizes (https://github.com/docker-library/docs/blob/master/postgres/README.md)
       POSTGRES_USER: hehe
-      POSTGRES_PASSWORD: 123    # the only required env var
-      PGDATA: /var/lib/postgresql/data    # used for setup sql data (Dockerfile that builds the image declares a volume at /var/lib/postgresql/data)
+      POSTGRES_PASSWORD: 123
+      PGDATA: /var/lib/postgresql/data
     volumes:
-      - postgres2:/var/lib/postgresql/data   # map to volume below -> will be consistent
+      - postgres2:/var/lib/postgresql/data
     ports:
-      - 5433:5432   # <external port>:<container-port>
+      - 5433:5432
     networks:
       - net-EC-MIC
     restart: unless-stopped
 
-# [1.1] pgadmin server - only used for processing without Intellij
-# (https://www.pgadmin.org/docs/pgadmin4/latest/container_deployment.html)
-#  pgadmin:
-#    container_name: EC-MIC-pg_admin
-#    image: dpage/pgadmin4
-#    environment:
-#      PGADMIN_DEFAULT_EMAIL: ${PGADMIN_DEFAULT_EMAIL:-pgadmin@pgadmin.org}    # dynamic-value:default
-#      PGADMIN_DEFAULT_PASSWORD: ${PGADMIN_DEFAULT_PASSWORD:-pgadmin}
-#      PGADMIN_CONFIG_SERVER_MODE: 'False'   # Don't require the user to login
-#    volumes:
-#      - pgadmin:/var/lib/pgadmin
-#    ports:
-#      - 5050:80     # use external port 5050 (or wev) to avoid port 80
-#    networks:
-#      - net-EC-MIC
-#    restart: unless-stopped
+# [3]
+  postgres-order:
+    container_name: EC-MIC-pg_sql_order
+    image: postgres
+    environment:
+      POSTGRES_USER: hehe
+      POSTGRES_PASSWORD: 123
+      PGDATA: /var/lib/postgresql/data
+    volumes:
+      - postgres3:/var/lib/postgresql/data
+    ports:
+      - 5434:5432
+    networks:
+      - net-EC-MIC
+    restart: unless-stopped
+
+# [4]
+  postgres-payment:
+    container_name: EC-MIC-pg_sql_payment
+    image: postgres
+    environment:
+      POSTGRES_USER: hehe
+      POSTGRES_PASSWORD: 123
+      PGDATA: /var/lib/postgresql/data
+    volumes:
+      - postgres4:/var/lib/postgresql/data
+    ports:
+      - 5435:5432
+    networks:
+      - net-EC-MIC
+    restart: unless-stopped
+
+# [5]
+  postgres-identity:
+    container_name: EC-MIC-pg_sql_identity
+    image: postgres
+    environment:
+      POSTGRES_USER: hehe
+      POSTGRES_PASSWORD: 123
+      PGDATA: /var/lib/postgresql/data
+    volumes:
+      - postgres5:/var/lib/postgresql/data
+    ports:
+      - 5436:5432
+    networks:
+      - net-EC-MIC
+    restart: unless-stopped
 
 
-# [2] https://hub.docker.com/_/mongo
-  # mongodb:
-  #   container_name: EC-MIC-mongodb
-  #   image: mongo
-  #   ports:
-  #     - 27017:27017
-  #   volumes:
-  #     - mongo:/data
-  #   environment:
-  #     - MONGO_INITDB_ROOT_USERNAME=hehe   # can also be set like this
-  #     - MONGO_INITDB_ROOT_PASSWORD=123
-  #   restart: unless-stopped
+# [6] https://hub.docker.com/_/mongo
+  mongodb-noti:
+    container_name: EC-MIC-mongodb-noti
+    image: mongo
+    ports:
+      - 27017:27017
+    volumes:
+      - mongo:/data
+    environment:
+      - MONGO_INITDB_ROOT_USERNAME=hehe   # can also be set like this
+      - MONGO_INITDB_ROOT_PASSWORD=123
+    restart: unless-stopped
 
 
-# [3] https://github.com/docker-library/docs/tree/master/mongo-express
+# https://github.com/docker-library/docs/tree/master/mongo-express
   # mongo-express:
   #   container_name: EC-MIC-mongo-express
   #   image: mongo-express
@@ -79,14 +110,33 @@ services:
   #   restart: unless-stopped
 
 
-# [4] for mail service (https://hub.docker.com/r/maildev/maildev)
-  # mail-dev:
-  #   container_name: EC-MIC-mail-dev
-  #   image: maildev/maildev
-  #   ports:
-  #     - 1080:1080     # for the UI
-  #     - 1025:1025     # for the SMTP server
-  #   restart: unless-stopped
+# [7] mail service (https://hub.docker.com/r/maildev/maildev)
+  mail-dev:
+    container_name: EC-MIC-mail-dev
+    image: maildev/maildev
+    ports:
+      - 1080:1080     # for the UI
+      - 1025:1025     # for the SMTP server
+    restart: unless-stopped
+
+
+# [8] Kafka service
+  kafka:
+    image: confluentinc/cp-kafka:latest
+    container_name: EC-MIC-kafka
+    ports:
+      - "9092:9092"
+    environment:
+      KAFKA_NODE_ID: 1
+      KAFKA_PROCESS_ROLES: 'broker,controller'
+      KAFKA_CONTROLLER_QUORUM_VOTERS: '1@localhost:9093'
+      KAFKA_LISTENERS: 'PLAINTEXT://0.0.0.0:9092,CONTROLLER://0.0.0.0:9093'
+      KAFKA_ADVERTISED_LISTENERS: 'PLAINTEXT://localhost:9092'
+      KAFKA_CONTROLLER_LISTENER_NAMES: 'CONTROLLER'
+      KAFKA_LISTENER_SECURITY_PROTOCOL_MAP: 'CONTROLLER:PLAINTEXT,PLAINTEXT:PLAINTEXT'
+      KAFKA_INTER_BROKER_LISTENER_NAME: 'PLAINTEXT'
+      CLUSTER_ID: 'MkU3OEVBNTcwNTJENDM2Qk' # Any base64 string
+      KAFKA_OFFSETS_TOPIC_REPLICATION_FACTOR: 1
 
 
 ####### create a network #######
@@ -94,9 +144,11 @@ networks:
   net-EC-MIC:
     driver: bridge
 
-######## create 3 volumes #######
+######## create volumes #######
 volumes:
   postgres1:
   postgres2:
-#  pgadmin:
-  # mongo:
+  postgres3:
+  postgres4:
+  postgres5:
+  mongo:

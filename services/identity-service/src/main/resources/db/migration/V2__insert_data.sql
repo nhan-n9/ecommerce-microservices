@@ -1,0 +1,26 @@
+INSERT INTO public.user_credentials (
+    email,
+    username,
+    password
+)
+VALUES
+    (
+        'john.doe@example.com',
+        'johndoe',
+        '$2a$10$7EqJtq98hPqEX7fNZaFWoOhi5GJZ8n1bq7xO1X8FQ6V5zPp6KQ9cW'
+    ),
+    (
+        'jane.smith@example.com',
+        'janesmith',
+        '$2a$10$7EqJtq98hPqEX7fNZaFWoOhi5GJZ8n1bq7xO1X8FQ6V5zPp6KQ9cW'
+    ),
+    (
+        'ha.nguyen@example.com',
+        'haaang',
+        '$2a$10$7EqJtq98hPqEX7fNZaFWoOhi5GJZ8n1bq7xO1X8FQ6V5zPp6KQ9cW'
+    ),
+    (
+        'alice.temp@example.com',
+        'alicetemp',
+        '$2a$10$7EqJtq98hPqEX7fNZaFWoOhi5GJZ8n1bq7xO1X8FQ6V5zPp6KQ9cW'
+    );
