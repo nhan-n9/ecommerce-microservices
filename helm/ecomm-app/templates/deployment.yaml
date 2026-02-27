@@ -63,7 +63,7 @@ spec:
           envFrom:
             {{- if and .Values.configMap.create }}
             - configMapRef:
-                name: {{  }}
+                name: {{ include "ecomm-app.configMapName" . }}
             {{- end }}
       {{- with .Values.volumes }}
       volumes:
