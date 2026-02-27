@@ -22,3 +22,8 @@ ingress:
     - paths:
         - path: /
           pathType: Prefix
+
+configMap:
+  enabled: true
+  data:
+    SPRING_PROFILES_ACTIVE: dev

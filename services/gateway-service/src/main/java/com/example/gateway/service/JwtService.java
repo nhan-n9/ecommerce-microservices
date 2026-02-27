@@ -14,7 +14,7 @@ import javax.crypto.SecretKey;
 @AllArgsConstructor
 @NoArgsConstructor
 public class JwtService {
-    @Value("${application.config.jwt.secret}")
+    @Value("${application.config.jwt.secret:a00ls1hLRMxTgk0AcrpawYJvR4FDwc07xGyaROb0H6L}")
     private String jwtSecret;
 
     public void validateToken(final String token) {
