@@ -4,8 +4,7 @@ kind: ConfigMap
 metadata:
   name: {{ include "ecomm-app.configMapName" . }}
   labels:
-    app.kubernetes.io/name: {{ include "chart.name" . }}
-    helm.sh/chart: {{ include "chart.chartVersion" . }}
+    app.kubernetes.io/name: {{ include "ecomm-app.name" . }}
     app.kubernetes.io/instance: {{ .Release.Name }}
     app.kubernetes.io/managed-by: {{ .Release.Service }}
 data:
