@@ -10,7 +10,8 @@ metadata:
     app.kubernetes.io/managed-by: {{ .Release.Service }}
 data:
   {{- if .Values.configMap.data }}
-  {{- range $key, $val := .Values.configMap.data }}
-  {{ $key | quote | indent 2 }}: {{ $val | quote }}
+    {{- range $key, $val := .Values.configMap.data }}
+      {{ $key | quote | indent 2 }}: {{ $val | quote }}
+    {{- end }}
   {{- end }}
-  {{- end }}
+{{- end }}
