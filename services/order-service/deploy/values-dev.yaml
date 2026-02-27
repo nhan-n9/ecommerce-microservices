@@ -1,0 +1,13 @@
+nameOverride: ""
+fullnameOverride: ""
+podAnnotations: {}
+
+image:
+  repository: heheh123/ecomm-order
+  pullPolicy: IfNotPresent
+  tag: dev
+
+
+service:
+  type: ClusterIP
+  port: 8080
