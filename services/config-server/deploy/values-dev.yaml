@@ -11,3 +11,9 @@ image:
 service:
   type: ClusterIP
   port: 8080
+
+
+configMap:
+  enabled: true
+  data:
+    SPRING_PROFILES_ACTIVE: dev
