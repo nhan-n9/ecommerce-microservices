@@ -17,3 +17,6 @@ configMap:
   enabled: true
   data:
     SPRING_PROFILES_ACTIVE: dev
+
+livenessProbe: null
+readinessProbe: null
