@@ -28,6 +28,7 @@ configMap:
   enabled: true
   data:
     SPRING_PROFILES_ACTIVE: dev
+    CONFIG_SERVER_URL: http://config-server
 
 
 livenessProbe:
