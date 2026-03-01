@@ -27,7 +27,7 @@ configMap:
   enabled: true
   data:
     SPRING_PROFILES_ACTIVE: dev
-    CONFIG_SERVER_URL: http://config-server
+    SPRING_CONFIG_IMPORT: "configserver:http://config-server:8080"
 
 
 livenessProbe:
