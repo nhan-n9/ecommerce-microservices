@@ -6,7 +6,7 @@ image:
   repository: heheh123/ecomm-gateway
   pullPolicy: IfNotPresent
   tag: dev
-  digest: sha256:06690f18c2df50a9cf352024ac08f6ce7a295b0b4197e789c49ea2bc01423b05
+  digest: sha256:55f0e2bb02e133501c9b3e16b1950fca1b1593f7575bc4a06a5578f9bf5a1835
 
 service:
   type: ClusterIP
