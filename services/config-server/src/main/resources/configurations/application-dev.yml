@@ -1,5 +1,3 @@
-# can be either YAML or properties format
-
 eureka:
   instance:
     hostname: localhost

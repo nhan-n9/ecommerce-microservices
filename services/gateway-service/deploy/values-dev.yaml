@@ -17,9 +17,10 @@ ingress:
   annotations:
     alb.ingress.kubernetes.io/scheme: internet-facing
     alb.ingress.kubernetes.io/target-type: ip
-    alb.ingress.kubernetes.io/group.name: public
+    alb.ingress.kubernetes.io/group.name: ecomm-public
   hosts:
-    - paths:
+    - host: manual-ecommerce.com    # for internal controller routing, havent bought a domain...
+      paths:
         - path: /
           pathType: Prefix
 
