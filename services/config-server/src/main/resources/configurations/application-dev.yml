@@ -1,13 +1,12 @@
 eureka:
-  instance:
-    hostname: localhost
   client:
-    service-url:
-      defaultZone: http://localhost:8761/eureka/
+    enabled: false
 
 spring:
   cloud:
     config:
+      discovery:
+        enabled: false
       override-system-properties: false     # do not override config from microservice
   datasource:
     username: ${DB_USERNAME:postgres}
