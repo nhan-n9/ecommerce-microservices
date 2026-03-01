@@ -68,6 +68,6 @@ Create the name of the ConfigMap to use
 {{- if and .Values.configMap.create .Values.configMap.name }}
 {{- printf "%s" .Values.configMap.name  | trunc 63 | trimSuffix "-" }}
 {{- else }}
-{{- default (include "ecomm-app.fullname" .) "configmap" }}
+{{- printf "%s-%s" (include "ecomm-app.fullname" .) "configmap" }}
 {{- end }}
 {{- end }}
