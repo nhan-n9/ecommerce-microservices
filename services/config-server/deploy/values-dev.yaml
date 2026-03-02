@@ -6,7 +6,7 @@ image:
   repository: heheh123/ecomm-config
   pullPolicy: IfNotPresent
   tag: dev
-  digest: sha256:b77940acd7f8f3920ea91e3c9fc0b496b3350ae915b30830f9c6bf475493a85b
+  digest: sha256:329d341347024748a8c454475fe7f88317cc8036a33a9d3916d806a36a7f1100
 
 
 service:
