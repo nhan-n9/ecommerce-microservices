@@ -11,3 +11,14 @@ image:
 service:
   type: ClusterIP
   port: 8080
+
+
+configMap:
+  enabled: true
+  data:
+    SPRING_PROFILES_ACTIVE: dev
+    SPRING_CONFIG_IMPORT: "configserver:http://ecomm-config-dev-ecomm-app:8080"
+
+
+livenessProbe: null
+readinessProbe: null
