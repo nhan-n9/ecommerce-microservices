@@ -7,7 +7,7 @@ image:
 
 service:
   type: ClusterIP
-  port: 9092
+  containerPort: 9092
 
 
 configMap:
