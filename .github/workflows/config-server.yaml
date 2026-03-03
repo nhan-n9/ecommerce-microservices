@@ -16,3 +16,6 @@ jobs:
     name: Call the main workflow
     uses: ./.github/workflows/cicd-test.yaml
     secrets: inherit
+    with:
+      SERVICE_NAME: config-server
+      IMAGE_NAME: heheh123/ecomm-config
