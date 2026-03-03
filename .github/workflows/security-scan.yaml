@@ -1,0 +1,4 @@
+name: Security scan for Docker image
+
+on:
+  workflow_dispatch:   # manual trigger

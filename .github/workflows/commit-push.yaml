@@ -1,0 +1,4 @@
+name: Edit source code & Push to repo
+
+on:
+  workflow_dispatch:   # manual trigger

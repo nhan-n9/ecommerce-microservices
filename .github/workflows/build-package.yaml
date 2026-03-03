@@ -1,0 +1,4 @@
+name: Checkout and Build source code
+
+on:
+  workflow_dispatch:   # manual trigger
