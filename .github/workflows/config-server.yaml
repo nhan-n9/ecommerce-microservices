@@ -14,5 +14,5 @@ on:
 jobs:
   main-workflow:
     name: Call the main workflow
-    uses: ./.github/reusable/cicd-test.yaml
+    uses: nhan-n9/ecommerce-microservices/.github/reusable/cicd-test.yaml
     secrets: inherit
