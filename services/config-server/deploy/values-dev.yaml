@@ -1,23 +1,17 @@
 nameOverride: ""
 fullnameOverride: ""
 podAnnotations: {}
-
 image:
   repository: heheh123/ecomm-config
   pullPolicy: IfNotPresent
   tag: dev
-  digest: sha256:d5471c0861730acde0fdb2363b07071f312e9e82754b9d717764dca34a3dd64c
-
-
+  digest: sha256:178cae97206c7c091d565e45083960ecc68d9c614fce1b4d25308b096b293e46
 service:
   type: ClusterIP
   port: 8080
-
-
 configMap:
   enabled: true
   data:
     SPRING_PROFILES_ACTIVE: dev
-
 livenessProbe: null
 readinessProbe: null
