@@ -20,8 +20,8 @@ jobs:
   ci_job:
     runs-on: ubuntu-latest
  
-    outputs:
-      digest: ${{ steps.build-docker-image.outputs.digest }}
+    # outputs:
+    #   digest: ${{ steps.build-docker-image.outputs.digest }}
 
     steps:
       - name: Checkout
@@ -56,19 +56,15 @@ jobs:
         uses: docker/build-push-action@v6
         id: build-docker-image
         with:
-          context: services/{{ inputs.SERVICE_NAME }}
+          context: services/${{ inputs.SERVICE_NAME }}
           push: true
           tags: ${{ inputs.IMAGE_NAME }}:${{ inputs.CICD_ENVIRONMENT }}
-        run: |
-          echo "[INFO] Digest: $digest"
-          echo "$digest" >> $GITHUB_ENV
-          echo "$digest" >> $GITHUB_OUTPUT
 
 
       - name: Update new image digest
         uses: mikefarah/yq@master
         with:
-          cmd: yq -i '.image.digest = "${{ env.digest }}"' "services/{{ inputs.SERVICE_NAME }}/deploy/values-${{ inputs.CICD_ENVIRONMENT }}.yaml"
+          cmd: yq -i '.image.digest = "${{ steps.build-docker-image.outputs.digest }}"' "services/${{ inputs.SERVICE_NAME }}/deploy/values-${{ inputs.CICD_ENVIRONMENT }}.yaml"
 
 
       # push to another repo
