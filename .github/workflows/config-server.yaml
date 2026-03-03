@@ -3,8 +3,8 @@ name: CICD workflow for [config-server] service
 on:
   workflow_dispatch:
   push:
-    # paths:
-    #   - ./.github/services/config-server.yaml
+    paths-ignore:
+      - services/**
     branches:
       # - main
       # - develop
