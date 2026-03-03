@@ -41,6 +41,7 @@ jobs:
       #   run: mvn test
 
       - name: Build with Maven
+        working-directory: services/${{ inputs.SERVICE_NAME }}
         run: mvn clean package -DskipTests
 
 
