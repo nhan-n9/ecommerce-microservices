@@ -1,13 +1,13 @@
 name: CICD workflow for [config-server] service
 
 on:
-  push:
-    paths:
-      - ./.github/services/config-server.yaml
-    branches:
-      # - main
-      # - develop
-      - cicd
+  # push:
+  #   paths:
+  #     - ./.github/services/config-server.yaml
+  #   branches:
+  #     # - main
+  #     # - develop
+  #     - cicd
   workflow_dispatch:   # manual trigger
 
 
