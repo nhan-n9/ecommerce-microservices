@@ -2,7 +2,6 @@
 name: Test CICD Workflow
 
 on:   # when to trigger the workflow
-  workflow_dispatch:   # manual trigger
   workflow_call:
     inputs:
       CICD_ENVIRONMENT:
