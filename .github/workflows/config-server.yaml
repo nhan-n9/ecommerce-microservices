@@ -14,8 +14,9 @@ on:
 jobs:
   main-workflow:
     name: Call the main workflow
-    uses: ./.github/workflows/cicd-test.yaml
+    uses: nhan-n9/ecommerce-microservices-cicd/.github/workflows/cicd-test.yaml
     secrets: inherit
     with:
       SERVICE_NAME: config-server
       IMAGE_NAME: heheh123/ecomm-config
+      GIT_REPOSITORY: nhan-n9/ecommerce-microservices
