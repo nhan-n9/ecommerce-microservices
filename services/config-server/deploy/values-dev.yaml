@@ -5,7 +5,7 @@ image:
   repository: heheh123/ecomm-config
   pullPolicy: IfNotPresent
   tag: dev
-  digest: sha256:8f49a98be3de2a6034c81222e447e81cd6265cdb7d69d12f58578016a746212f
+  digest: sha256:a25217a86edf9e351a1655e206dd76e21363942dc4aa3e9ad7da8ae30c34beff
 service:
   type: ClusterIP
   port: 8080
