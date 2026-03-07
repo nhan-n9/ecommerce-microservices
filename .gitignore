@@ -2,3 +2,7 @@
 notes.md
 
 **/.env
+
+terraform
+**/.terraform
+**/terraform.tfstate

@@ -3,8 +3,8 @@ name: CICD workflow for [config-server] service
 on:
   workflow_dispatch:
   push:
-    paths-ignore:
-      - services/**
+    paths:
+      - services/config-server/**
     branches:
       # - main
       # - develop
@@ -12,12 +12,15 @@ on:
 
 
 jobs:
-  main-workflow:
-    name: Call the main workflow
-    uses: nhan-n9/ecommerce-microservices-cicd/.github/workflows/cicd-test.yaml@main
+  cicd-workflow:
+    name: Run the main cicd workflow
+    uses: nhan-n9/ecommerce-microservices-cicd/.github/workflows/cicd.yaml@main
     secrets: inherit
     with:
       SERVICE_NAME: config-server
       IMAGE_NAME: heheh123/ecomm-config
       GIT_REPOSITORY: nhan-n9/ecommerce-microservices
       GIT_BRANCH: cicd
+      PROJECT_NAME: ecomm-micro
+      CODE_TEST_ENABLED: false
+      TRIVY_SCAN_ENABLED: false
