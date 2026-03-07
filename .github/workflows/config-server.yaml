@@ -25,5 +25,6 @@ jobs:
       CODE_TEST_ENABLED: false
       TRIVY_SCAN_ENABLED: true
       CICD_ENVIRONMENT: dev
+      SONAR_SCAN_ENABLED: false
       SONAR_PROJECT_NAME: ecommerce-microservices
       SONAR_PROJECT_KEY: nhan-n9_ecommerce-microservices
