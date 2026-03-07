@@ -1,3 +1,3 @@
 ### Config Server service
 
-test 9
+test 10
