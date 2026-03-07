@@ -14,7 +14,7 @@ on:
 jobs:
   cicd-workflow:
     name: Run the main cicd workflow
-    uses: nhan-n9/ecommerce-microservices-cicd/.github/workflows/cicd.yaml@main
+    uses: nhan-n9/ecommerce-microservices-cicd/.github/workflows/ci-main.yaml@main
     secrets: inherit
     with:
       SERVICE_NAME: config-server
