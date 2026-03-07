@@ -23,5 +23,5 @@ jobs:
       GIT_BRANCH: cicd
       PROJECT_NAME: ecomm-micro
       CODE_TEST_ENABLED: false
-      TRIVY_SCAN_ENABLED: false
+      TRIVY_SCAN_ENABLED: true
       CICD_ENVIRONMENT: dev
