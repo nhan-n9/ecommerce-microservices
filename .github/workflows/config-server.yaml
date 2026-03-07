@@ -1,4 +1,4 @@
-name: CICD workflow for [config-server] service
+name: CI workflow [config-server]
 
 on:
   workflow_dispatch:
@@ -24,3 +24,4 @@ jobs:
       PROJECT_NAME: ecomm-micro
       CODE_TEST_ENABLED: false
       TRIVY_SCAN_ENABLED: false
+      CICD_ENVIRONMENT: dev
