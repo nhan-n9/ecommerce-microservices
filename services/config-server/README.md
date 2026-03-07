@@ -1,3 +1,3 @@
 ### Config Server service
 
-test 45
+test 46
