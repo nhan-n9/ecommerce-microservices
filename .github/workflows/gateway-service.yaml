@@ -4,7 +4,7 @@ on:
   workflow_dispatch:
   push:
     paths:
-      - services/config-service/**
+      - services/gateway-service/**
     branches:
       # - main
       # - develop
