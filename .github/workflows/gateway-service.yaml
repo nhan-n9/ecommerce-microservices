@@ -1,0 +1,33 @@
+name: CI workflow [gateway-service]
+
+on:
+  workflow_dispatch:
+  push:
+    paths:
+      - services/config-service/**
+    branches:
+      # - main
+      # - develop
+      - cicd
+
+permissions:
+  contents: read
+  security-events: write
+  actions: read
+
+jobs:
+  cicd-workflow:
+    name: Run the main cicd workflow
+    uses: nhan-n9/ecommerce-microservices-cicd/.github/workflows/ci-main.yaml@main
+    secrets: inherit
+    with:
+      SERVICE_NAME: gateway-service
+      IMAGE_NAME: heheh123/ecomm-gateway
+      GIT_REPOSITORY: nhan-n9/ecommerce-microservices
+      GIT_BRANCH: cicd
+      PROJECT_NAME: ecomm-micro
+      CODE_TEST_ENABLED: false
+      TRIVY_SCAN_ENABLED: true
+      CICD_ENVIRONMENT: dev
+      SONAR_PROJECT_NAME: ecommerce-microservices
+      SONAR_PROJECT_KEY: nhan-n9_ecommerce-microservices
