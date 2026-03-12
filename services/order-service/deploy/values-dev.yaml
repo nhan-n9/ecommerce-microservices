@@ -4,7 +4,7 @@ podAnnotations: {}
 
 image:
   repository: heheh123/ecomm-order
-  pullPolicy: IfNotPresent
+  pullPolicy: Always
   tag: dev
 
 

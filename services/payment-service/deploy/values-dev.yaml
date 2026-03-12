@@ -4,7 +4,7 @@ podAnnotations: {}
 
 image:
   repository: heheh123/ecomm-payment
-  pullPolicy: IfNotPresent
+  pullPolicy: Always
   tag: dev
   digest: sha256:97d993e08bacdadc40acf7f6a32a4520fc4f14514eb34a312a27a906e233309f
 
