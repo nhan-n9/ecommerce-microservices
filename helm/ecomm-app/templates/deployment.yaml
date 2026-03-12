@@ -38,11 +38,11 @@ spec:
           securityContext:
             {{- toYaml . | nindent 12 }}
           {{- end }}
-          {{- if .Values.image.digest }}
-          image: "{{ .Values.image.repository }}:{{ .Values.image.tag | default $.Chart.AppVersion }}@{{ .Values.image.digest }}"
-          {{- else }}
+          # {{- if .Values.image.digest }}
+          # image: "{{ .Values.image.repository }}:{{ .Values.image.tag | default $.Chart.AppVersion }}@{{ .Values.image.digest }}"
+          # {{- else }}
+          # {{- end }}
           image: "{{ .Values.image.repository }}:{{ .Values.image.tag | default .Chart.AppVersion }}"
-          {{- end }}
           imagePullPolicy: {{ .Values.image.pullPolicy }}
           ports:
             - name: http
