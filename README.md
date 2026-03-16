@@ -9,7 +9,7 @@ Kubernetes deployment, and cloud infrastructure provisioning.
 
 Below is the target CI/CD workflow and tools used in this project:
 
-![CI/CD Flow](cicd-flow.png)
+<img width="1263" height="434" alt="cicd-flow" src="https://github.com/user-attachments/assets/6adf8fe0-b979-4eea-8b85-5ca1daf80cb3" />
 
 Typical flow includes:
 
@@ -25,12 +25,13 @@ Typical flow includes:
 Below is the AWS architecture used for deployment.
 The design follows a cost-limited strategy suitable for learning and free-tier usage.
 
-![AWS Infrastructure](aws-infras.png)
+<img width="1190" height="691" alt="aws-infras" src="https://github.com/user-attachments/assets/600c4f9c-6bb1-4cfd-a130-33f963127d97" />
 
-Infrastructure and deployment assets in this repo:
+Infrastructure and deployment assets:
 
 - `helm/`: Kubernetes packaging and service templates
 - `docker-compose.yml`: local development dependencies
+
 
 ## Repository Structure
 
@@ -47,7 +48,6 @@ services/
 	product-service/
 	user-service/
 helm/
-
 docker-compose.yml
 ```
 
@@ -87,19 +87,16 @@ making rollback and independent service delivery easier as the platform grows.
 
 ## Project Highlights
 
-Add your screenshots in this section to showcase operational visibility and delivery quality.
-
 ### ArgoCD deployment handling
-
-
+<img width="1500" height="635" alt="argocd" src="https://github.com/user-attachments/assets/81447347-f44d-44e0-84d0-5fa385d40a8f" />
 
 ### Prometheus monitoring
-
-
+<img width="1501" height="787" alt="promethus" src="https://github.com/user-attachments/assets/fbe4ea6e-da19-4c15-b7b1-f45a7676de0d" />
 
 ### SonarQube code scan
-
+<img width="1496" height="403" alt="sonarqube" src="https://github.com/user-attachments/assets/6f4d6725-b9ff-412f-942a-e562ba8b2988" />
 
 
 ### Trivy image scan
+<img width="1482" height="655" alt="trivy" src="https://github.com/user-attachments/assets/079a7c62-381b-4a0e-8ca9-54ecf9c08ff3" />
 
