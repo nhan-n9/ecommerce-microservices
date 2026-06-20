@@ -1,6 +1,6 @@
 FROM eclipse-temurin:21-jdk-alpine AS builder
 
-RUN groupadd -r spring && useradd -r -g spring spring
+RUN addgroup -S spring && adduser -S -G spring spring
 
 USER spring:spring
 
