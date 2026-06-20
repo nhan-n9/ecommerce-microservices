@@ -2,13 +2,13 @@ FROM eclipse-temurin:21-jdk-alpine AS builder
 
 RUN addgroup -S spring && adduser -S -G spring spring
 
-USER spring:spring
-
 WORKDIR /builder
 
-ARG JAR_FILE=target/*.jar
+RUN chown spring:spring /builder
 
-COPY ${JAR_FILE} app.jar
+USER spring:spring
+
+COPY target/*.jar app.jar
 
 RUN java -Djarmode=tools -jar app.jar extract --layers --destination extracted
 
